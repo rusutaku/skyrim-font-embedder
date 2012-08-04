@@ -1,0 +1,91 @@
+
+
+
+※フォント自体の著作権や改変、再配布などの注意事項はしっかりと目を通しておいて
+　ください。
+
+
+--------------------------------------------------------------------------------
+        Flash DevelopとFlex SDKによるSkyrimのフォント作成。
+--------------------------------------------------------------------------------
+・作成方法
+
+1.下記URLのStep.1～Step.5に従ってFlash DevelopとFlex SDKをインストールします。
+　Flex SDKは3.5 Release (3.5.0.12683)を落としてください。
+
+　http://clockmaker.jp/blog/2009/07/tutorial-install-flashdevelop-flex-sdk/
+
+2.このアーカイブを解凍してできたフォルダの asset\fontsに変換したいトゥルータイプ
+　フォント(拡張子.ttf)をコピーする。デフォルトではインターフェイスと本の2種類が
+　必要。
+
+3.このアーカイブを解凍してできたファイルの fonts_ja.as3proj をダブルクリック、
+　または、Flash Developを起動した状態で トップメニュー → Project → Open Project
+　で読み込む。
+
+4.Flash Developの右側のProjectパネルからsrc\Main.asをダブルクリックで開く
+
+5.Main.asの24行目は本のフォント設定です。以下のようになっていると思われますので
+　これの src= 以下を自分の変換したいフォント名にしてください。
+
+        [Embed(source = '..\\asset\\fonts\\HuiFont29.ttf', fontName = 'skyrim_books', mimeType = 'application/x-font')]
+
+　例えばあずきフォント(azuki.ttf)をSkyrimのフォントにするにはasset\fontsに
+　azuki.ttfをコピーして24行目を以下のように修正します。
+
+        [Embed(source = '..\\asset\\fonts\\azuki.ttf', fontName = 'skyrim_books', mimeType = 'application/x-font')]
+
+6.同様にMain.asの26行目も修正します。こちらはインターフェース(メニューや字幕等)
+　のフォントです。
+
+7.修正が終わったらFlash Developのツールバーの▲マークを押すかキーボードのF5キーを押してください。
+　問題がなければしばらく後にfont_ja.swfと言うウィンドウが出てくるはずです。
+　Flash Developの下の方のOutputにも done と出ているはずです。
+
+8.全て完了すればこのアーカイブを解凍してできたフォルダの bin 以下に
+　fontconfig.txt と fonts_ja.swf が出来ていますのでこれをSkyrimのゲームフォルダ以下の
+　data\Interface にコピーします。
+
+これでフォントの作成は終了です。
+
+
+
+--------------------------------------------------------------------------------
+・応用
+
+Main.asの [Embed～ の  fontName = 'skyrim_book'('skyrim_interface')はfontconfig.txt
+で設定する際のフォント名になります。
+
+ですので、特定のフォントだけ変えたい、例えばダイアログ(会話)フォントだけ違う物に
+したいと思ったら、
+
+        [Embed(source = '..\\asset\\fonts\\cinecaption227.TTF', fontName = 'skyrim_dialog', mimeType = 'application/x-font')]
+        var dialogfont:Class;
+
+という2行を28行目以下に追記して、fontconfig.txtの
+
+map "$DialogueFont" = "skyrim_interface" Normal
+
+を
+
+map "$DialogueFont" = "skyrim_dialog" Normal
+
+に修正してやれば会話だけ別のフォントになります。
+
+・更新履歴
+  v0.2
+    Main.asの方はskyrim_booksでfontconfig.txtはskyrim_bookとフォント名をミスして
+    いたので修正
+  v0.1
+    初期リリース
+
+--------------------------------------------------------------------------------
+・免責
+　このファイルアーカイブを利用の結果生じた問題、損害に対して原作者は一切の責任を
+　負いません。
+
+--------------------------------------------------------------------------------
+・改変、再配布に関して
+　このファイルのアーカイブは自由に改変、再配布をしていただいて構いません。
+　ただし、改変した際に発生した問題は全て改変者が負うものとします。原作者は
+　一切関知致しません。
