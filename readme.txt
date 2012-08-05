@@ -27,7 +27,7 @@ Flash DevelopとFlex SDKによるSkyrimのフォント作成
     [Embed(source = '../asset/fonts/GL-Tsukiji-4go-TESV.ttf', fontName = 'skyrim_every', embedAsCFF='false', mimeType = 'application/x-font')]
 
    - 例えばあずきフォント (azuki.ttf) を Skyrim のフォントにするには asset\fonts に
- azuki.ttf をコピーして24行目を以下のように修正します。
+ azuki.ttf をコピーして27行目を以下のように修正します。
 
         [Embed(source = '../asset/fonts/azuki.ttf', fontName = 'skyrim_every', embedAsCFF='false', mimeType = 'application/x-font')]`
 
